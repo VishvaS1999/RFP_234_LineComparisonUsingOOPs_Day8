@@ -4,58 +4,66 @@ import java.util.Scanner;
 
 public class CalculateLength
 {
-    public static double x1, x2, x3, x4, y1, y2 ,y3 ,y4;
-    public static void length()
+    public static float length;
+
+    public static float line_1;
+
+    public static float line_2;
+
+    public static int x1, x2, y1, y2;
+
+    public static void inputs ()
     {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter The Value Of x1:");
-        x1 = sc.nextDouble();
-
-        System.out.println("Enter The Value Of y1:");
-        y1 = sc.nextDouble();
-
-        System.out.println("Enter The Value Of x2:");
-        x2 = sc.nextDouble();
-
-        System.out.println("Enter The Value Of y2:");
-        y2 = sc.nextDouble();
-
-        double len = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-        System.out.println("Length Of Line Is :" + len);
-
-        System.out.println("Enter The Value Of x3:");
-        x3 = sc.nextDouble();
-
-        System.out.println("Enter The Value Of y3:");
-        y3 = sc.nextDouble();
-
-        System.out.println("Enter The Value Of x4:");
-        x4 = sc.nextDouble();
-
-        System.out.println("Enter The Value Of y4:");
-        y4 = sc.nextDouble();
-
-        double len1 = Math.sqrt((x4 - x3) * (x4 - x3) + (y4 - y3) * (y4 - y3));
-        System.out.println("Length Of Line Is :" + len1);
-
-        if (len == len1)
+        //Calculating Length for Line 1 by taking values
+        System.out.println("Enter The values for Line 1");
+        length();
+        System.out.println("Length of LINE-1  points " + "(" + x1 + "," + y1 + ") & " + "(" + x2 + "," + y2 + ") " + "is " + length + "\n");
+        line_1 = length;
+        //Calculating Length for Line 2 by taking values
+        System.out.println("Enter The values for Line 2");
+        length();
+        System.out.println("Length of LINE-2  points " + "(" + x1 + "," + y1 + ") & " + "(" + x2 + "," + y2 + ") " + "is " + length + "\n");
+        line_2 = length;
+        compare();
+    }
+    public static void compare ()
+    {
+        //Comparing the line lengths
+        int compare = Float.compare(line_1, line_2);
+        if (compare == 0)
         {
-            System.out.println("length of both line are equal:");
+            System.out.println("Length of LINE-1 & LINE-2 are equal.");
         }
-        else if (len > len1)
+        else if (compare > 0)
         {
-            System.out.println("length is greater then other line:");
+            System.out.println("length of LINE-1 is greater than LINE-2.");
         }
         else
         {
-            System.out.println("length is less then other line:");
+            System.out.println("length of LINE-1 is smaller than LINE-2.");
         }
-
     }
+    public static void length ()
+    {
+        Scanner scan = new Scanner(System.in);
+        //scanning user input values
+        System.out.println("Enter the x1 value for Line:");
+        x1 = scan.nextInt();
+        System.out.println("Enter the y1 value for Line:");
+        y1 = scan.nextInt();
+        System.out.println("Enter the x2 value for Line:");
+        x2 = scan.nextInt();
+        System.out.println("Enter the y2 value for Line:");
+        y2 = scan.nextInt();
+        //Calculating the length using formula
+        length = (float) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+
+
     public static void main(String[] args)
     {
-        length();
+        CalculateLength lengthCompareRef = new CalculateLength();
+        lengthCompareRef.inputs();
+
     }
 }
